@@ -13,46 +13,45 @@ displayHistory();
 search_btn.click(clickSearch);
 clear_hist.click(clearHistory);
 
+
 function getWeather(city) {
     var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API
     $.ajax(url)
         .then(function (response) {
+            current_weather.empty();
             console.log(response)
 
         var city = response.name;
         var date = new Date(response.dt*1000).toLocaleDateString();    
-        var icon = response.weather[0].icon
+        var icon = response.weather[0].icon;
         var iconURL = "https://openweathermap.org/img/wn/"+ icon +"@2x.png";
-        var title = $("<h3>")
-        
+        var title = $("<h3>");
+
         title.text(city)
         current_weather.append(title)
         title.append(" ", "(", date, ")", "<img src="+iconURL+">")
-        console.log(city)
-        console.log(date)
 
         var temp = Math.round((response.main.temp - 273.15) * 1.80 + 32);
         var pTemp = $("<p>")
         pTemp.text("Temperature: " + temp + "°F");
         current_weather.append(pTemp)
-        console.log(temp)
 
         var humidity = response.main.humidity;
         var phumidity = $("<p>")
         phumidity.text("Humidity: " + humidity + "%");
         current_weather.append(phumidity)
-        console.log(humidity)
 
         var wind = response.wind.speed;
         var pwind = $("<p>")
         pwind.text("Wind Speed: " + wind + " MPH");
         current_weather.append(pwind)
-        console.log(wind)
 
         })
+
         .catch(function (error) {
             console.log(error.message)
         })
+
 }
 
 function getForecast(city) {
@@ -64,24 +63,25 @@ function getForecast(city) {
                 if (!forecast.dt_txt.includes("12:00:00")) continue;
                 console.log(forecast)
 
-                // var date = $("#h3")
-                // .addClass("card")
-                // .text((response.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
+                var fiveDate = new Date(forecast.dt*1000).toLocaleDateString(); 
+                var fiveTitle = $("<card-title>")
+                fiveTitle.text(fiveDate)
+                forecast_el.append(fiveTitle)
 
-                var fiveTemp = $("<div>")
-                    .addClass('card')
-                    .text("Temp: " + Math.round((forecast.main.temp - 273.15) * 1.80 + 32) + "°F")
-                    forecast_el.append(fiveTemp)
+                var fiveIcon = forecast.weather[0].icon;
+                var fiveIconURL = "https://openweathermap.org/img/wn/"+ fiveIcon +"@2x.png";
+                var forecastIcon = $("<img>")
+                forecast_el.append("<img src="+fiveIconURL+">")
 
-                // Style forecast card
+                var fiveTemp = Math.round((forecast.main.temp - 273.15) * 1.80 + 32);
+                var forecastTemp = $("<div>")
+                forecastTemp.text("Temp:" + fiveTemp)
+                forecast_el.append(forecastTemp)
 
-
-                    // var card2 = $("<div")
-                    // .text("Humidity: " + (forecast.main.humidity) + "%")
-                    // forecast_el.append(card2)                
-                // var card2 = $("<div")
-                // .addClass("col")
-                // .text(forecast.main.humidity + "%")
+                var fiveHumidity = forecast.main.humidity;
+                var forecastHumidity = $("<div>")
+                forecastHumidity.text("Humidity: " + fiveHumidity)
+                forecast_el.append(forecastHumidity)
 
 
             }
@@ -91,13 +91,33 @@ function getForecast(city) {
         })
 }
 
-function getUVI(coord) {
-    var url = "https://api.openweathermap.org/data/2.5/uvi?lat=" + coord.lat + "&lon=" + coord.lon + "&appid=" + API
+function getUVI() {
+             var lon = response.coord.lon;
+            var lat = response.coord.lat;    
+    
+    var url = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + API
+   
+    
     $.ajax(url)
         .then(function (response) {
 
-            var lon = data.coord.lon;
-            var lat = data.coord.lat;
+
+
+            var uvColor;
+                var uvResponse = response.value;
+                var uvIndex = $("<p>").text("UV Index: ");
+                var btn = $("<span>").addClass("btn btn-sm").text(uvResponse);
+
+
+                if (uvResponse < 3) {
+                    btn.addClass("btn-success");
+                } else if (uvResponse < 7) {
+                    btn.addClass("btn-warning");
+                } else {
+                    btn.addClass("btn-danger");
+                }
+
+                current_weather.append(uvIndex.append(btn));
 
             // attach UVI to main card
             console.log(response)
@@ -161,5 +181,7 @@ function getLocal(key) {
 }
 function clearHistory(event){
     event.preventDefault();
-    document.location.reload();
+    localStorage.clear()
+
+
 }
