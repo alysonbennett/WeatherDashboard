@@ -19,24 +19,17 @@ function getWeather(city) {
         .then(function (response) {
             console.log(response)
 
-
-            
         var city = response.name;
-        var Hcity = $("<h3>")
-        Hcity.text(city)
-
-        var date = new Date(response.dt*1000).toLocaleDateString();
-        // city.append(date)
-
-
+        var date = new Date(response.dt*1000).toLocaleDateString();    
         var icon = response.weather[0].icon
         var iconURL = "https://openweathermap.org/img/wn/"+ icon +"@2x.png";
-
-
-
-        current_weather.append(Hcity, date, "<img src="+iconURL+">")
+        var title = $("<h3>")
+        
+        title.text(city)
+        current_weather.append(title)
+        title.append(" ", "(", date, ")", "<img src="+iconURL+">")
         console.log(city)
-
+        console.log(date)
 
         var temp = Math.round((response.main.temp - 273.15) * 1.80 + 32);
         var pTemp = $("<p>")
