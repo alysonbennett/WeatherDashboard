@@ -44,6 +44,7 @@ function getWeather(city) {
         var wind = response.wind.speed;
         var pwind = $("<p>");
         pwind.text("Wind Speed: " + wind + " MPH");
+        
         current_weather.append(pwind);
 
         var lat = response.coord.lat;
@@ -68,23 +69,19 @@ function getWeather(city) {
             current_weather.append(UVI);
                 // uvIndex.append(btn);
                 $("#forecastEl card-body").append(UVI.append(btn));
-
         });
-
     })
-
         .catch(function (error) {
             console.log(error.message);
         });
-
 }
+
 // Function to display five day forecast
 function getForecast(city) {
     var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + API;
     $.get(url)
         .then(function (response) {
             forecast_el.empty();
-            // forecast_el.html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").addClass("card");
 
             for (var forecast of response.list) {
                 if (!forecast.dt_txt.includes("12:00:00")) continue;
@@ -97,31 +94,27 @@ function getForecast(city) {
                 var fiveDate = new Date(forecast.dt*1000).toLocaleDateString(); 
                 var forecastTitle = $("<h4>").addClass("card-title");
                 forecastTitle.text(fiveDate);
-                // forecast_el.append(fiveTitle);
 
                 var fiveIcon = forecast.weather[0].icon;
                 var forecastIcon = "https://openweathermap.org/img/wn/"+ fiveIcon +"@2x.png";
-                // forecast_el.append("<img src="+fiveIconURL+">")
 
                 var fiveTemp = Math.round((forecast.main.temp - 273.15) * 1.80 + 32);
                 var forecastTemp = $("<div>").addClass("card-text");
                 forecastTemp.text("Temp: " + fiveTemp + "°F");
-                // forecast_el.append(forecastTemp);
 
                 var fiveHumidity = forecast.main.humidity;
                 var forecastHumidity = $("<div>").addClass("card-text");
                 forecastHumidity.text("Humidity: " + fiveHumidity + "%");
-                // forecast_el.append(forecastHumidity);
 
                 forecastCol.append(cardFive.append(cardBodyFive.append(forecastTitle, "<img src="+forecastIcon+">", forecastTemp, forecastHumidity)));
-                // forecastCol.append(forecast_el(fiveDate, fiveTemp, fiveHumidity))
-                forecast_el.append(forecastCol)
+                forecast_el.append(forecastCol);
             }
         })
         .catch(function (error) {
             console.log(error.message);
         });
 }
+
 // Function that displays the search history on the side of the page
 function displayHistory() {
     if (!weatherHistory.length) return;
@@ -140,17 +133,20 @@ function displayHistory() {
         search_hist.append(el);
     }
 }
+
 // Function that updates the search history
 function clickHistory() {
     var city = $(this).text();
     updateHistory(city);
 }
+
 // Function that updates history when clicked
 function clickSearch() {
     var city = search_inp.val();
     search_inp.val('');
     updateHistory(city);
 }
+
 // Function that sets the search history and connects the displayHistory function
 function updateHistory(city) {
     if (weatherHistory.includes(city)) {
@@ -162,26 +158,30 @@ function updateHistory(city) {
     setHistory();
     displayHistory();
 }
+
 // Sets history to local storage
 function setHistory() {
     setLocal("weatherHistory", weatherHistory);
 }
+
 // Function to call on local storage
 function getHistory() {
     return getLocal("weatherHistory") || [];
 }
+
 // Function to stringify items to local storage
 function setLocal(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
+
 // Function to get local storage and parse
 function getLocal(key) {
     return JSON.parse(localStorage.getItem(key));
 }
-// Function that clears the local storage
+
+// Function that clears the local storage and weather
 function clearHistory(event){
     event.preventDefault();
     localStorage.clear();
-
-
+    location.reload();
 }

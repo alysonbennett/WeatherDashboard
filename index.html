@@ -7,35 +7,41 @@
     <!--Link to local style sheet-->
     <link rel="stylesheet" href="style.css" />
     <!--Link to Bootstrap CDN-->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   </head>
 
   <body>
+
     <!--Nav bar that displays at the top of the page-->
     <nav class="navbar navbar-dark bg-dark justify-content-center">
       <span class="navbar-brand"><strong>Weather Dashboard</strong></span>
     </nav>
+
     <!--Container for the search bar, search history, clear history button, current weather, and forecast-->
     <div class="container mt-3">
       <div class="row">
         <aside class="col-lg-3">
           <h4>Search for a City:</h4>
+
           <!--Search Button-->
           <div class="input-group">
             <input type="text" class="form-control" id="searchInp" />
             <div class="input-group-append">
-              <button class="btn btn-primary" id="searchBtn">Search</button>
+              <button class="btn btn-primary" id="searchBtn">
+                <i class="fas fa-search"></i>
+              </button>
             </div>
           </div>
+
           <!--Displays search history-->
           <ul class="list-group mt-3" id="searchHistory"></ul>
           <br />
+
           <!--Button to clear history-->
           <button class="btn btn-primary" id="clear_Btn">Clear History</button>
         </aside>
+
         <!--Displays current weather from the city the user searches for-->
         <div class="col-lg-9 card">
           <div class="container-fluid p-4" id="currentWeatherEl">
@@ -44,15 +50,15 @@
 
           <!--Displays five day forecast-->
           <div class="card-deck mt-3" id="forecastEl">
-            <!-- <div class = "card-columns h-100" >
-            </div> -->
           </div>
         </div>
       </div>
     </div>
+
     <!--Link to jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--Link to internal javascript-->
     <script src="script.js"></script>
+
   </body>
 </html>
