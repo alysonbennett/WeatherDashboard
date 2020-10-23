@@ -27,6 +27,10 @@ function getWeather(city) {
         var iconURL = "https://openweathermap.org/img/wn/"+ icon +"@2x.png";
         var title = $("<h3>");
 
+        var header = $("<h5>")
+        header.text("Current Weather In:")
+        current_weather.append(header)
+
         title.text(city);
         current_weather.append(title);
         title.append(" ", "(", date, ")", "<img src="+iconURL+">");
@@ -44,7 +48,6 @@ function getWeather(city) {
         var wind = response.wind.speed;
         var pwind = $("<p>");
         pwind.text("Wind Speed: " + wind + " MPH");
-        
         current_weather.append(pwind);
 
         var lat = response.coord.lat;
@@ -69,6 +72,10 @@ function getWeather(city) {
             current_weather.append(UVI);
                 // uvIndex.append(btn);
                 $("#forecastEl card-body").append(UVI.append(btn));
+
+                var header = $("<h4>")
+                header.text("5-Day Forecast:")
+                current_weather.append(header)
         });
     })
         .catch(function (error) {
@@ -79,6 +86,7 @@ function getWeather(city) {
 // Function to display five day forecast
 function getForecast(city) {
     var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + API;
+
     $.get(url)
         .then(function (response) {
             forecast_el.empty();
