@@ -67,7 +67,7 @@ function getWeather(city) {
                 }
             current_weather.append(UVI);
                 // uvIndex.append(btn);
-                $("#forecastEl .card-body").append(UVI.append(btn));
+                $("#forecastEl card-body").append(UVI.append(btn));
 
         });
 
@@ -84,32 +84,38 @@ function getForecast(city) {
     $.get(url)
         .then(function (response) {
             forecast_el.empty();
-            forecast_el.html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").addClass("card");
+            // forecast_el.html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").addClass("card");
 
             for (var forecast of response.list) {
                 if (!forecast.dt_txt.includes("12:00:00")) continue;
                 console.log(forecast);
 
-                var fiveDate = new Date(forecast.dt*1000).toLocaleDateString(); 
-                var fiveTitle = $("<div>").addClass("card-title");
-                fiveTitle.text(fiveDate);
-                forecast_el.append(fiveTitle);
+                var forecastCol = $("<div>");
+                var cardFive = $("<div>").addClass("card bg-primary text-white");
+                var cardBodyFive = $("<div>").addClass("card-body p-1");
 
-                // var fiveIcon = forecast.weather[0].icon;
-                // var fiveIconURL = "https://openweathermap.org/img/wn/"+ fiveIcon +"@2x.png";
+                var fiveDate = new Date(forecast.dt*1000).toLocaleDateString(); 
+                var forecastTitle = $("<h4>").addClass("card-title");
+                forecastTitle.text(fiveDate);
+                // forecast_el.append(fiveTitle);
+
+                var fiveIcon = forecast.weather[0].icon;
+                var forecastIcon = "https://openweathermap.org/img/wn/"+ fiveIcon +"@2x.png";
                 // forecast_el.append("<img src="+fiveIconURL+">")
 
                 var fiveTemp = Math.round((forecast.main.temp - 273.15) * 1.80 + 32);
                 var forecastTemp = $("<div>").addClass("card-text");
                 forecastTemp.text("Temp: " + fiveTemp + "°F");
-                forecast_el.append(forecastTemp);
+                // forecast_el.append(forecastTemp);
 
                 var fiveHumidity = forecast.main.humidity;
                 var forecastHumidity = $("<div>").addClass("card-text");
                 forecastHumidity.text("Humidity: " + fiveHumidity + "%");
-                forecast_el.append(forecastHumidity);
+                // forecast_el.append(forecastHumidity);
 
-
+                forecastCol.append(cardFive.append(cardBodyFive.append(forecastTitle, "<img src="+forecastIcon+">", forecastTemp, forecastHumidity)));
+                // forecastCol.append(forecast_el(fiveDate, fiveTemp, fiveHumidity))
+                forecast_el.append(forecastCol)
             }
         })
         .catch(function (error) {
