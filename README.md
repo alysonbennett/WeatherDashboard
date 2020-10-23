@@ -1,20 +1,19 @@
 ## Weather Dashboard
+
 Alyson Bennett
-
-## User Story
-
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
 
 ## Link to Completed Project
 
+[Link to final project](https://alysonbennett.github.io/WeatherDashboard.github.io/)
+
+## User Story
+
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
 
 ## Acceptance Criteria
 
-```
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
 THEN I am presented with current and future conditions for that city and that city is added to the search history
@@ -28,16 +27,32 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
-```
 
 ## Process
-This assignment was started from scratch as there was no starter code. I began by setting up an API key for OpenWeatherMap. From there, I started building my code to meet the criteria stated above. 
 
+This assignment was started from scratch as there was no starter code. I began by setting up an API key for OpenWeatherMap. Links were needed for the current weather data, the 5 day forecast, and the UV index. From there, I started building my code to meet the criteria stated above. 
+
+Functions were needed to search for a city when clicked, to display the current weather conditions, and to display the five day forecast for that city.
+
+Within the current weather card, the city, date, and icon representing the current conditions is displayed at the top. Underneath, the temperature, humidity, wind speed, and UV index is listed. All but the UV index were pulled from the response of the current weather data. The UV Index needed a separate API link (UV Index) as well as being color coded for favorable, moderate, or severe conditions.
+
+The five day forecast has five different cards within a card deck. Each has a date as the title, with an icon, the temperature, and humidity listed below. 
+
+I also included a clear history button. This button deletes the local storage as well as the current weather and forecast sections. 
 
 ## Screen Shots of Final Assignment
 
-## Final Thoughts
-This was a challenging activity and there are still some bugs to be worked out. The first bug is getting my buttons to append for the UV index with the conditions of favorable, moderate, and severe. The second bug is getting the forecast to append to five separate cards in the card deck. I am still working to find solutions. Also, the clear history button is not clearing the information displayed in the current weather section and the forecast section. While this was not required in the criteria, I still felt like it was something to be included.
+This is what the user will see when they first open the Weather Dashboard site:
 
-Overall, I feel this is a good match to what was asked for a complete assignment. There was a lot of trial and error and trying different methods out. I'm happy with the final product for the time being, but will continue to work out the bugs.
+[Landing Page](assets/firstScreenShot.png)
+
+This is what the user will see when they search for a city:
+
+[Searched City](assets/citySearch.png)
+
+## Final Thoughts
+
+This was a challenging activity and there were some bugs that took quite a bit of time to work out. The first bug is getting button colors to change for the UV index with the conditions of favorable, moderate, and severe. The second bug was getting the forecast to append to five separate cards in the card deck.
+
+Overall, I am very happy with the final product of this homework assignment. While I would have liked to add some extra styling, the bootstrap elements still provide a polished looking site.
 

@@ -3,10 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Text on tab in browser-->
     <title>Weather Dashboard</title>
-    <!--Link to Bootstrap CDN-->
+
+    <!--Link to Font Awesome Icon-->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!--Link to Bootstrap CDN-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
   </head>
 
   <body>
@@ -40,13 +45,13 @@
           <button class="btn btn-primary" id="clear_Btn">Clear History</button>
         </aside>
 
-        <!--Displays current weather from the city the user searches for-->
+        <!--Displays current weather for the city the user searches for-->
         <div class="col-lg-9 card">
           <div class="container-fluid p-4" id="currentWeatherEl">
             <h5>Current Weather In:</h5>
           </div>
 
-          <!--Displays five day forecast-->
+          <!--Displays five day forecast for city searched-->
           <div class="card-deck mt-3" id="forecastEl">
           </div>
         </div>
