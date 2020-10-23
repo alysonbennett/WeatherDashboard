@@ -27,7 +27,7 @@ function getWeather(city) {
         var iconURL = "https://openweathermap.org/img/wn/"+ icon +"@2x.png";
         var title = $("<h3>");
 
-        var header = $("<h5>")
+        var header = $("<h4>")
         header.text("Current Weather In:")
         current_weather.append(header)
 
@@ -69,8 +69,8 @@ function getWeather(city) {
                 } else {
                     btn.addClass("btn-danger");
                 }
+
             current_weather.append(UVI);
-                // uvIndex.append(btn);
                 $("#forecastEl card-body").append(UVI.append(btn));
 
                 var header = $("<h4>")
