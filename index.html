@@ -4,49 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
+    <!--Link to local style sheet-->
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <!--Link to Bootstrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   </head>
-  <body>
 
+  <body>
+    <!--Nav bar that displays at the top of the page-->
     <nav class="navbar navbar-dark bg-dark justify-content-center">
         <span class="navbar-brand"><strong>Weather Dashboard</strong></span>
     </nav>
-
+    <!--Container for the search bar, search history, clear history button, current weather, and forecast-->
     <div class="container mt-3">
       <div class="row">
         <div class="col-4">
           <h4>Search for a City:</h4>
-
+          <!--Search Button-->
           <div class="input-group">
-            <input type="text" class="form-control" id="searchInp" />
+            <input type="text" class="form-control" id="searchInp"/>
             <div class="input-group-append">
               <button class="btn btn-primary" id="searchBtn">Search</button>
             </div>
           </div>
-
+          <!--Displays search history-->
           <ul class="list-group mt-3" id="searchHistory"></ul>
-          <br>          
+          <br>    
+            <!--Button to clear history-->      
             <button class="btn btn-primary" id="clear_Btn">Clear History</button>          
         </div>
-
+        <!--Displays current weather from the city the user searches for-->
         <div class="col-8">
           <div class="container p-3 my-3 border" id="currentWeatherEl">
             <h5>Current Weather In: </h5>
-
-
           </div>
 
-          <div class="card-deck mt-3" >
-            <div class = "card" id="forecastEl">
-
+          
+          <!--Displays five day forecast-->
+          <div class="card-deck mt-3" id="forecastEl">
+            <div class = "card" >
+            </div>
             </div>
         </div>
-
+      </div> 
+    </div>
+    <!--Link to jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Link to internal javascript-->
     <script src="script.js"></script>
   </body>
 </html>

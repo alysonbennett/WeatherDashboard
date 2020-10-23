@@ -2,3 +2,9 @@ h5 {
     font-style: italic;
     color: grey;
 }
+
+  
+#forecastEL {
+    position: absolute;
+    left: -4%;
+}

@@ -9,6 +9,9 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
+## Link to Completed Project
+
+
 ## Acceptance Criteria
 
 ```
@@ -28,8 +31,13 @@ THEN I am presented with the last searched city forecast
 ```
 
 ## Process
+This assignment was started from scratch as there was no starter code. I began by setting up an API key for OpenWeatherMap. From there, I started building my code to meet the criteria stated above. 
 
 
 ## Screen Shots of Final Assignment
 
 ## Final Thoughts
+This was a challenging activity and there are still some bugs to be worked out. The first bug is getting my buttons to append for the UV index with the conditions of favorable, moderate, and severe. The second bug is getting the forecast to append to five separate cards in the card deck. I am still working to find solutions. Also, the clear history button is not clearing the information displayed in the current weather section and the forecast section. While this was not required in the criteria, I still felt like it was something to be included.
+
+Overall, I feel this is a good match to what was asked for a complete assignment. There was a lot of trial and error and trying different methods out. I'm happy with the final product for the time being, but will continue to work out the bugs.
+
