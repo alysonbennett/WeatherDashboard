@@ -4,7 +4,7 @@ Alyson Bennett
 
 ## Link to Completed Project
 
-[Link to final project](https://alysonbennett.github.io/WeatherDashboard.github.io/)
+[Link to deployed application](https://alysonbennett.github.io/WeatherDashboard.github.io/)
 
 ## User Story
 
@@ -44,11 +44,11 @@ I also included a clear history button. This button deletes the local storage as
 
 This is what the user will see when they first open the Weather Dashboard site:
 
-![Landing Page](assets/firstScreenShot.png)
+![Landing Page](assets/ScreenShots/firstScreenShot.png)
 
 This is what the user will see when they search for a city:
 
-![Searched City](assets/citySearch.png)
+![Searched City](assets/ScreenShots/citySearch.png)
 
 ## Final Thoughts
 
