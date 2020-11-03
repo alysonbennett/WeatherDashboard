@@ -2,7 +2,7 @@
 
 ## Link to Completed Project
 
-![Link to deployed application](https://alysonbennett.github.io/WeatherDashboard.github.io/)
+[Link to deployed application](https://alysonbennett.github.io/WeatherDashboard/)
 
 ## Technologies Used
 
