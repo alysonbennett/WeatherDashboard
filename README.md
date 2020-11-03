@@ -14,7 +14,7 @@
 
 ## Description of Weather Dashboard
 
-This application shows the current weather conditions as well as the five day forecast for the users location. They can also search for any desired city in the world
+This application shows the current weather conditions as well as the five day forecast for any city the user searches for.
 
 ## Screen Shots of Final Assignment
 
